@@ -6,12 +6,12 @@
 
 @font-face {
     font-family: 'SoyuzGrotesk';
-    src: url('/static/fonts/Soyuz Grotesk Bold.otf');
+    src: url('../../static/fonts/Soyuz Grotesk Bold.otf');
 }
 
 @font-face {
     font-family: 'InterRegular';
-    src: url('/static/fonts/Inter_24pt-Regular.ttf');
+    src: url('../../static/fonts/Inter_24pt-Regular.ttf');
 }
 
 body {
