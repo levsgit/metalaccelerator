@@ -1,0 +1,257 @@
+.form-page {
+    padding: 2em 4em;
+    min-height: 100vh;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    padding: 3em;
+}
+
+.form-header {
+    margin-bottom: 3em;
+}
+
+.form-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1em;
+}
+
+.form-header h1 {
+    font-size: 3em;
+    line-height: 1.2;
+    margin-bottom: 1em;
+    color: #fff;
+}
+
+.form-description {
+    font-family: 'InterRegular';
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #B7C4C7;
+}
+
+.form-section {
+    margin-bottom: 3em;
+    padding-bottom: 2em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 1.5em;
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 1.5em;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'InterRegular';
+    font-size: 1.1em;
+    color: #B7C4C7;
+    margin-bottom: 0.5em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="url"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1em;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'InterRegular';
+    font-size: 1em;
+    transition: border-color 0.3s ease-out, background-color 0.3s ease-out;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #698CB8;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.file-upload {
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 2em;
+    text-align: center;
+    transition: border-color 0.3s ease-out, background-color 0.3s ease-out;
+}
+
+.file-upload:hover {
+    border-color: #698CB8;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.file-upload-info {
+    color: #B7C4C7;
+    font-family: 'InterRegular';
+}
+
+.file-upload-info p {
+    margin-bottom: 1em;
+}
+
+.file-requirements {
+    text-align: left;
+    margin-top: 1em;
+}
+
+.file-requirements ol {
+    margin-left: 1.5em;
+    margin-top: 0.5em;
+}
+
+.file-requirements li {
+    margin-bottom: 0.5em;
+}
+
+.form-footer {
+    margin-top: 3em;
+    text-align: center;
+}
+
+.form-disclaimer {
+    font-family: 'InterRegular';
+    color: #B7C4C7;
+    margin-bottom: 2em;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.cta-button {
+    padding: 1em 2em;
+    border-radius: 8px;
+    font-family: 'SoyuzGrotesk';
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: transform 0.3s ease-out, background-color 0.3s ease-out;
+    background: #4B5D56;
+    border: none;
+    color: #DADADA;
+}
+
+.cta-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    background: #698CB8;
+    color: #122059;
+}
+
+.cta-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.form-hints {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.form-hint {
+    display: inline-block;
+    margin: 0.5em;
+    color: #698CB8;
+    font-family: 'InterRegular';
+    font-size: 0.9em;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-underline-offset: 4px;
+    transition: color 0.3s ease-out;
+}
+
+.form-hint:hover {
+    color: #B7C4C7;
+}
+
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B7C4C7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1em center;
+    background-size: 1em;
+    padding-right: 2.5em;
+}
+
+.form-group select option {
+    background: #122059;
+    color: #fff;
+    padding: 1em;
+}
+
+@media (max-width: 768px) {
+    .form-page {
+        padding: 1em;
+    }
+
+    .form-container {
+        padding: 2em 1em;
+    }
+
+    .form-header h1 {
+        font-size: 1.5em;
+    }
+
+    .form-description {
+        font-size: 1em;
+    }
+
+    .form-section h2 {
+        font-size: 1.5em;
+    }
+
+    .cta-button {
+        width: 100%;
+    }
+
+    .form-hints {
+        padding: 0 1em;
+    }
+}
+
+.flash-message {
+    margin-bottom: 2em;
+    padding: 1em;
+    border-radius: 8px;
+    font-family: 'InterRegular';
+    text-align: center;
+}
+
+.flash-message.success {
+    background: rgba(75, 93, 86, 0.2);
+    color: #DADADA;
+    border: 1px solid #4B5D56;
+}
+
+.flash-message.error {
+    background: rgba(255, 0, 0, 0.1);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+} 

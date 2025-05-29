@@ -1,0 +1,122 @@
+.applications-page {
+    padding: 2em 4em;
+    min-height: 100vh;
+}
+
+.applications-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.applications-container h1 {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.applications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2em;
+}
+
+.application-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    padding: 2em;
+    transition: transform 0.3s ease-out, background-color 0.3s ease-out;
+}
+
+.application-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.application-header {
+    margin-bottom: 1.5em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.application-header h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: #fff;
+}
+
+.application-date {
+    font-family: 'InterRegular';
+    color: #B7C4C7;
+    font-size: 0.9em;
+}
+
+.application-section {
+    margin-bottom: 1.5em;
+}
+
+.application-section h3 {
+    font-family: 'SoyuzGrotesk';
+    font-size: 1.2em;
+    color: #fff;
+    margin-bottom: 0.5em;
+}
+
+.application-section p {
+    font-family: 'InterRegular';
+    color: #B7C4C7;
+    line-height: 1.6;
+}
+
+.application-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.application-section li {
+    font-family: 'InterRegular';
+    color: #B7C4C7;
+    margin-bottom: 0.5em;
+    display: flex;
+    gap: 0.5em;
+}
+
+.application-section li strong {
+    color: #fff;
+    min-width: 100px;
+}
+
+.presentation-link {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    color: #B7C4C7;
+    text-decoration: none;
+    transition: background-color 0.3s ease-out, color 0.3s ease-out;
+}
+
+.presentation-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .applications-page {
+        padding: 1em;
+    }
+
+    .applications-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .application-card {
+        padding: 1.5em;
+    }
+
+    .application-header h2 {
+        font-size: 1.3em;
+    }
+
+    .application-section h3 {
+        font-size: 1.1em;
+    }
+} 

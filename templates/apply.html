@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подать заявку - МеталлАкселератор</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">МеталлАкселератор</a>
+            <ul>
+                <li><a href="/#about">О нас</a></li>
+                <li><a href="/#startups">Стартапы</a></li>
+                <li><a href="/#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="form-page">
+        <div class="form-container">
+            <div class="form-header">
+                <h1>Заявка стартапа на финансирование</h1>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST" action="{{ url_for('apply') }}" enctype="multipart/form-data" class="startup-form">
+                <div class="form-section">
+                    <h2>Основная информация</h2>
+                    
+                    <div class="form-group">
+                        <label for="name">Название</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="short_description">Коротко расскажите про проект/продукт</label>
+                        <textarea id="short_description" name="short_description" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="full_description">Опишите продукт/проект/решение - что это такое и что делает</label>
+                        <textarea id="full_description" name="full_description" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="market_segment">Сегмент рынка</label>
+                        <input type="text" id="market_segment" name="market_segment">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="key_technologies">Ключевые технологии</label>
+                        <textarea id="key_technologies" name="key_technologies" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="project_stage">Текущая стадия проекта</label>
+                        <select id="project_stage" name="project_stage" required>
+                            <option value="">Выберите стадию</option>
+                            <option value="idea">Идея</option>
+                            <option value="prototype">Прототип</option>
+                            <option value="mvp">MVP</option>
+                            <option value="market">Выход на рынок</option>
+                            <option value="growth">Рост</option>
+                            <option value="scale">Масштабирование</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="target_market">Целевой рынок</label>
+                        <textarea id="target_market" name="target_market" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="competitors">Ваши конкуренты</label>
+                        <textarea id="competitors" name="competitors" required placeholder="Ключевые конкуренты в России и за рубежом"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Финансы и метрики</h2>
+
+                    <div class="form-group">
+                        <label for="monthly_revenue">Среднемесячная выручка</label>
+                        <input type="text" id="monthly_revenue" name="monthly_revenue" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customers_count">Количество клиентов</label>
+                        <input type="text" id="customers_count" name="customers_count" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="website">Ссылка на сайт</label>
+                        <input type="url" id="website" name="website">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="investment_request">Ваш инвестиционный запрос</label>
+                        <textarea id="investment_request" name="investment_request" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Контактная информация</h2>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="leader_name">ФИО лидера проекта</label>
+                        <input type="text" id="leader_name" name="leader_name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telegram">Ваш аккаунт в tg</label>
+                        <input type="text" id="telegram" name="telegram" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">Город</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inn">ИНН</label>
+                        <input type="text" id="inn" name="inn" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="source">Откуда узнали о программе?</label>
+                        <input type="text" id="source" name="source" required>
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <div class="form-buttons">
+                        <button type="submit" class="cta-button" disabled>Отправить заявку</button>
+                    </div>
+                    <div class="form-hints"></div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 МеталлАкселератор. Все права защищены.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+</body>
+</html> 

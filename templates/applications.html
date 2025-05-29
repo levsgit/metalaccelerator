@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заявки - МеталлАкселератор</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/applications.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">МеталлАкселератор</a>
+            <ul>
+                <li><a href="/#about">О нас</a></li>
+                <li><a href="/#startups">Стартапы</a></li>
+                <li><a href="/#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="applications-page">
+        <div class="applications-container">
+            <h1>Заявки стартапов</h1>
+            
+            <div class="applications-grid">
+                {% for application in applications %}
+                <div class="application-card">
+                    <div class="application-header">
+                        <h2>{{ application.name }}</h2>
+                        <span class="application-date">{{ application.created_at }}</span>
+                    </div>
+                    
+                    <div class="application-content">
+                        <div class="application-section">
+                            <h3>Описание</h3>
+                            <p>{{ application.short_description }}</p>
+                        </div>
+
+                        <div class="application-section">
+                            <h3>Технологии</h3>
+                            <p>{{ application.key_technologies }}</p>
+                        </div>
+
+                        <div class="application-section">
+                            <h3>Метрики</h3>
+                            <ul>
+                                <li><strong>Выручка:</strong> {{ application.monthly_revenue }}</li>
+                                <li><strong>Клиенты:</strong> {{ application.customers_count }}</li>
+                                <li><strong>Стадия:</strong> {{ application.project_stage }}</li>
+                            </ul>
+                        </div>
+
+                        <div class="application-section">
+                            <h3>Контактная информация</h3>
+                            <ul>
+                                <li><strong>Лидер:</strong> {{ application.leader_name }}</li>
+                                <li><strong>Email:</strong> {{ application.email }}</li>
+                                <li><strong>Telegram:</strong> {{ application.telegram }}</li>
+                                <li><strong>Город:</strong> {{ application.city }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 МеталлАкселератор. Все права защищены.</p>
+    </footer>
+</body>
+</html> 
