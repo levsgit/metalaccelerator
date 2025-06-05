@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}{{ startup.name }} - МеталлАкселератор{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/startup_detail.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="startup-detail">
+    <div class="startup-header">
+        <h1>{{ startup.name }}</h1>
+        <span class="stage-badge">{{ startup.project_stage }}</span>
+    </div>
+
+    <div class="startup-content">
+        <div class="main-info">
+            <div class="description-section">
+                <h2>Описание проекта</h2>
+                <p>{{ startup.full_description }}</p>
+            </div>
+
+            <div class="details-grid">
+                <div class="detail-item">
+                    <h3>Ключевые технологии</h3>
+                    <p>{{ startup.key_technologies }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Целевой рынок</h3>
+                    <p>{{ startup.target_market }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Конкуренты</h3>
+                    <p>{{ startup.competitors }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Запрос на инвестиции</h3>
+                    <p>{{ startup.investment_request }}</p>
+                </div>
+            </div>
+
+            <div class="metrics-section">
+                <div class="metric-item">
+                    <h3>Ежемесячная выручка</h3>
+                    <p>{{ startup.monthly_revenue|format_currency }} ₽</p>
+                </div>
+
+                <div class="metric-item">
+                    <h3>Количество клиентов</h3>
+                    <p>{{ startup.customers_count }}</p>
+                </div>
+
+                <div class="metric-item">
+                    <h3>Сумма инвестиций</h3>
+                    <p>{{ startup.investment_amount|format_currency }} ₽</p>
+                </div>
+
+                <div class="metric-item">
+                    <h3>Собрано инвестиций</h3>
+                    <p>{{ startup.investment_raised|format_currency }} ₽</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <h2>Контактная информация</h2>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <i class="fas fa-user"></i>
+                    <span>{{ startup.leader_name }}</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>{{ startup.email }}</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-telegram"></i>
+                    <span>{{ startup.telegram }}</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>{{ startup.phone }}</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>{{ startup.city }}</span>
+                </div>
+                {% if startup.website %}
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <a href="{{ startup.website }}" target="_blank">{{ startup.website }}</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="startup-tags">
+        {% for tag in startup.tags %}
+        <span class="tag">{{ tag.name }}</span>
+        {% endfor %}
+    </div>
+
+    <div class="actions">
+        <a href="{{ url_for('startup_catalog') }}" class="btn btn-secondary">Назад к каталогу</a>
+    </div>
+</div>
+{% endblock %} 

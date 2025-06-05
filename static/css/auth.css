@@ -1,0 +1,152 @@
+.auth-section {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #fff;
+}
+
+.auth-container {
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-form .form-group {
+    margin-bottom: 20px;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.auth-form input,
+.auth-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.auth-form input:focus,
+.auth-form select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.auth-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.auth-button:hover {
+    background-color: #0056b3;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.auth-footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+.alert {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.user-type-selector {
+    display: flex;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+
+.user-type-option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 1em;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    color: #B7C4C7;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.user-type-option:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.user-type-option.selected {
+    background: #e99338;
+    color: #fff;
+    box-shadow: 0 0 4px #ff8c00;
+}
+
+.user-type-icon {
+    font-size: 1.2em;
+}
+
+@media (max-width: 768px) {
+    .auth-section {
+        padding: 2em 1em;
+    }
+
+    .auth-container {
+        padding: 1.5em;
+    }
+
+    .auth-button {
+        width: 100%;
+    }
+
+    .user-type-selector {
+        flex-direction: column;
+    }
+    
+    .user-type-option {
+        padding: 1.5em;
+    }
+} 

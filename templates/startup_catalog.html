@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Каталог стартапов - МеталлАкселератор{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/catalog.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="catalog-container">
+    <div class="filters-section">
+        <form id="filterForm" class="filter-form">
+            <div class="filter-group">
+                <label for="stage">Стадия проекта</label>
+                <select id="stage" name="stage" class="form-select">
+                    <option value="">Все стадии</option>
+                    <option value="idea">Идея</option>
+                    <option value="MVP">MVP</option>
+                    <option value="working_product">Рабочий продукт</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="niche">Ниша</label>
+                <select id="niche" name="niche" class="form-select">
+                    <option value="">Все ниши</option>
+                    <option value="metallurgy">Металлургия</option>
+                    <option value="recycling">Переработка</option>
+                    <option value="new_materials">Новые материалы</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="investment">Сумма инвестиций</label>
+                <select id="investment" name="investment" class="form-select">
+                    <option value="">Любая сумма</option>
+                    <option value="0-1000000">До 1 млн ₽</option>
+                    <option value="1000000-5000000">1-5 млн ₽</option>
+                    <option value="5000000-10000000">5-10 млн ₽</option>
+                    <option value="10000000-">Более 10 млн ₽</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="geography">География</label>
+                <select id="geography" name="geography" class="form-select">
+                    <option value="">Все регионы</option>
+                    <option value="moscow">Москва</option>
+                    <option value="spb">Санкт-Петербург</option>
+                    <option value="other">Другие регионы</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    
+    <div class="startups-section">
+        <div id="startupsList" class="startups-grid">
+            {% for startup in startups %}
+            <div class="startup-card">
+                <div class="startup-header">
+                    <h3>{{ startup.name }}</h3>
+                    <span class="stage-badge">{{ startup.project_stage }}</span>
+                </div>
+                <p class="startup-description">{{ startup.short_description }}</p>
+                <div class="startup-details">
+                    <div class="detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>{{ startup.city }}</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>{{ startup.investment_amount|format_currency }} ₽</span>
+                    </div>
+                </div>
+                <div class="startup-tags">
+                    {% for tag in startup.tags %}
+                    <span class="tag">{{ tag.name }}</span>
+                    {% endfor %}
+                </div>
+                <a href="{{ url_for('startup_detail', startup_id=startup.id) }}" class="btn btn-outline-primary">Подробнее</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function applyFilters() {
+    const form = document.getElementById('filterForm');
+    const formData = new FormData(form);
+    const params = new URLSearchParams();
+    
+    for (let [key, value] of formData.entries()) {
+        if (value) {
+            params.append(key, value);
+        }
+    }
+    
+    fetch(`/api/startups/filter?${params.toString()}`)
+        .then(response => response.json())
+        .then(data => {
+            const startupsList = document.getElementById('startupsList');
+            startupsList.innerHTML = data.map(startup => `
+                <div class="startup-card">
+                    <div class="startup-header">
+                        <h3>${startup.name}</h3>
+                        <span class="stage-badge">${startup.project_stage}</span>
+                    </div>
+                    <p class="startup-description">${startup.short_description}</p>
+                    <div class="startup-details">
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${startup.city}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>${new Intl.NumberFormat('ru-RU').format(startup.investment_amount)} ₽</span>
+                        </div>
+                    </div>
+                    <div class="startup-tags">
+                        ${startup.tags.map(tag => `<span class="tag">${tag.name}</span>`).join('')}
+                    </div>
+                    <a href="/startup/${startup.id}" class="btn btn-outline-primary">Подробнее</a>
+                </div>
+            `).join('');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Произошла ошибка при загрузке данных');
+        });
+}
+
+// Add change event listeners to all selects
+document.querySelectorAll('.filter-group select').forEach(select => {
+    select.addEventListener('change', applyFilters);
+});
+</script>
+{% endblock %} 
